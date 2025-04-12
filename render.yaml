@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: self-portfolio
+    runtime: dotnet
+    repo: https://github.com/Tanmay-0607/MyPortfolioCore
+    branch: main
+    buildCommand: dotnet publish -c Release -o out
+    startCommand: dotnet out/SelfPortfolio2.dll
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+    plan: free
