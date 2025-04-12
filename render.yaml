@@ -3,7 +3,8 @@ services:
     name: self-portfolio
     repo: https://github.com/Tanmay-0607/MyPortfolioCore
     branch: main
-    dockerfilePath: ./Dockerfile
+    buildCommand: dotnet publish -c Release -o out
+    startCommand: dotnet out/SelfPortfolio2.dll
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
