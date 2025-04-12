@@ -1,0 +1,205 @@
+﻿@{
+    ViewData["Title"] = "About Me";
+}
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<!-- Custom Page Styling -->
+<style>
+    body {
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .section-title {
+        font-weight: 700;
+        font-size: 1.8rem;
+        border-left: 5px solid #0d6efd;
+        padding-left: 0.5rem;
+        margin-top: 2rem;
+    }
+
+    .section-content {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #444;
+    }
+
+    .skill-badge {
+        background-color: #e7f1ff;
+        color: #0d6efd;
+        border-radius: 1rem;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.9rem;
+        margin: 0.25rem;
+        display: inline-block;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: #6c757d;
+    }
+
+    .container-about {
+        max-width: 900px;
+    }
+
+    @@media (max-width: 576px) {
+        @@media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+        background-color: #121212;
+        color: #f0f0f0;
+    }
+
+    body.dark-mode .section-title {
+        border-color: #0dcaf0;
+    }
+
+    body.dark-mode .section-content {
+        color: #d1d1d1;
+    }
+
+    body.dark-mode .skill-badge {
+        background-color: #1f1f1f;
+        color: #0dcaf0;
+    }
+
+    body.dark-mode .hero-subtitle {
+        color: #a1a1a1;
+    }
+
+    /* Toggle button styles */
+    #darkModeToggle {
+        border: none;
+        background: transparent;
+        font-size: 1.3rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    #themeIcon {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    body.dark-mode #themeIcon.fa-moon {
+        opacity: 0;
+        transform: rotate(180deg);
+    }
+
+    body.dark-mode #themeIcon.fa-sun {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+</style>
+
+<div class="container container-about py-5">
+    <div class="main-content">
+        <h1 class="hero-title">About Me</h1>
+        <p class="hero-subtitle">Full-stack learner · Cisco-certified · App builder · Certified Ethical Hacker</p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">👨‍💻 Developer Journey</h2>
+        <p class="section-content">
+            Hey there! I'm an aspiring full-stack developer currently focused on building
+            <strong>modern ASP.NET MVC web applications</strong> using <strong>C#</strong>.
+            I've been diving deep into the MVC pattern—crafting clean controllers, designing efficient models,
+            and building dynamic views using Razor.
+        </p>
+        <p class="section-content">
+            My journey includes working with <strong>SQL Server</strong> for data storage, setting up
+            <strong>Entity Framework Core</strong> to manage databases, and building projects in
+            <strong>Visual Studio</strong>. I love bringing backend logic to life and developing apps
+            that solve real problems.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">🛠️ Skills & Tools</h2>
+        <div class="section-content">
+            <span class="skill-badge">Java</span>
+            <span class="skill-badge">App Development</span>
+            <span class="skill-badge">C#</span>
+            <span class="skill-badge">ASP.NET Core MVC</span>
+            <span class="skill-badge">Entity Framework Core</span>
+            <span class="skill-badge">SQL Server</span>
+            <span class="skill-badge">Razor Pages</span>
+            <span class="skill-badge">HTML & CSS</span>
+            <span class="skill-badge">Visual Studio</span>
+            <span class="skill-badge">CCNA</span>
+            <span class="skill-badge">Certified Ethical Hacking</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">📜 Certifications & Projects</h2>
+        <p class="section-content">
+            I’m a <strong>Cisco Certified Network Administrator (CCNA)</strong> with a solid foundation in
+            networking, routing, and troubleshooting.
+        </p>
+        <p class="section-content">
+            I’ve also developed an <strong>Android payroll management application</strong> using
+            <strong>Java</strong> for the user interface. This helped me explore mobile-friendly design
+            and I used <strong>Firebase</strong> for the Backend of my Application which handled all the data of the workers.
+        </p>
+        <p class="section-content">
+        Managed and configured <strong>AWS EC2</strong> instances running different <strong>Linux</strong> distributions. 
+        Handled <strong>server deployment</strong>, <strong>scaling</strong>, and <strong>optimization of resources</strong>.
+</p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">🚀 Current Focus</h2>
+        <p class="section-content">
+            I’m currently building this portfolio and personal blog using <strong>ASP.NET Core MVC</strong>.
+            It showcases my projects, learning journey, and insights as I grow as a developer.
+            From layout design to backend logic — every piece of this site is hand-crafted by me.
+        </p>
+    </div>
+</div>
+
+<!-- Dark Mode Toggle Script -->
+<script>
+    const body = document.body;
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const icon = document.getElementById('themeIcon');
+
+    function setTheme(isDark) {
+        if (isDark) {
+            body.classList.add('dark-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            localStorage.setItem('dark-mode', 'enabled');
+        } else {
+            body.classList.remove('dark-mode');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            localStorage.setItem('dark-mode', 'disabled');
+        }
+    }
+
+    // On load
+    const darkPref = localStorage.getItem('dark-mode');
+    setTheme(darkPref === 'enabled');
+
+    toggleBtn.addEventListener('click', () => {
+        const isDark = !body.classList.contains('dark-mode');
+        setTheme(isDark);
+    });
+</script>

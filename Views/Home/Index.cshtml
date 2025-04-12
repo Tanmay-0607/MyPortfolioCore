@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <div class="main-content">
+        <h1 id="title">Welcome To My Portfolio!! It's me Tanmay</h1> <br> 
+        <p class="lead">I am presently a student of Btech IT with a passion of <strong>Software, Web apps, Networking, Systems, </strong>
+            soo much that even with my busy learning schedule, I managed to actively work on <strong>Projects, Lead a Team </strong> and do <strong>Freelancing</strong> </p>
+        </div>
+    </section>
+
+    <div class="row">
+        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
+            <h2 id="gettingStartedTitle">My Work</h2>
+            <p>
+                This Section will Take you to my Actively working or past worked on projects with proper Images 
+                of the Project or skillset explanation of my role in the Projects In depth for better Understanding
+            </p>
+            <p><a href="@Url.Action("Projects", "Home")" class="btn btn-outline-primary">View My Projects</a></p>
+        </section>
+        <section class="col-md-4" aria-labelledby="librariesTitle">
+            <h2 id="librariesTitle">Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-outline-primary" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </section>
+        <section class="col-md-4" aria-labelledby="hostingTitle">
+            <h2 id="hostingTitle">Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-outline-primary" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </section>
+    </div>
+</main>

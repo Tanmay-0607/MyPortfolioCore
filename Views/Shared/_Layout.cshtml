@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - My Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: -1;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(-45deg, #1d2b64, #f8cdda, #1fa2ff, #fcb045);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        @@keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body.dark-mode {
+            background: linear-gradient(-45deg, #000428, #004e92, #373b44, #4286f4);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #f0f0f0;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            color: #000 !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+            .navbar a,
+            .navbar-brand,
+            .nav-link {
+                color: #000 !important;
+            }
+
+        body.dark-mode .navbar {
+            background-color: rgba(0, 0, 0, 0.6) !important;
+            color: #fff !important;
+        }
+
+            body.dark-mode .navbar a,
+            body.dark-mode .navbar-brand,
+            body.dark-mode .nav-link {
+                color: #fff !important;
+            }
+
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            margin: 2rem auto;
+            border-radius: 12px;
+            max-width: 900px;
+            backdrop-filter: blur(8px);
+        }
+
+        body.dark-mode .main-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #f0f0f0;
+        }
+
+        #darkModeToggle {
+            font-size: 1.2rem;
+            border: none;
+            background: transparent;
+            color: inherit;
+        }
+
+        #themeIcon {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">MyPortfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("About", "Home")">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Contact", "Home")">Contact</a></li>
+                </ul>
+                <button id="darkModeToggle" class="btn btn-sm btn-outline-secondary">
+                    <i id="themeIcon" class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="pb-3">
+        <div class="main-content">
+            @RenderBody()
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const body = document.body;
+        const toggleBtn = document.getElementById('darkModeToggle');
+        const icon = document.getElementById('themeIcon');
+
+        function setTheme(isDark) {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('dark-mode', 'enabled');
+            } else {
+                body.classList.remove('dark-mode');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('dark-mode', 'disabled');
+            }
+        }
+
+        const darkPref = localStorage.getItem('dark-mode');
+        setTheme(darkPref === 'enabled');
+
+        toggleBtn.addEventListener('click', () => {
+            const isDark = !body.classList.contains('dark-mode');
+            setTheme(isDark);
+        });
+    </script>
+
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 100,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": { "value": "#ffffff" },
+                "shape": {
+                    "type": "circle",
+                    "stroke": { "width": 0, "color": "#000000" }
+                },
+                "opacity": {
+                    "value": 0.8,
+                    "random": true
+                },
+                "size": {
+                    "value": 2,
+                    "random": true
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 0.6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    }
+                },
+                "modes": {
+                    "repulse": {
+                        "distance": 100,
+                        "duration": 0.4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
